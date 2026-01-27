@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Splitter {
+
+    public static String[] split(String s, String regex) {
+        ArrayList<String> result = new ArrayList<>();
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(s);
+        int lastIndex = 0;
+        while (matcher.find()) {
+
+       if (matcher.start() > lastIndex) {
+                result.add(s.substring(lastIndex, matcher.start()));
+            }
+            result.add(matcher.group());
+
+            lastIndex = matcher.end();            
+            
+            //get remaining part
+            if (lastIndex < s.length()) {
+                result.add(s.substring(lastIndex));
+            }
+        }
+
+        return result.toArray(new String[0]);
+    }
+}
