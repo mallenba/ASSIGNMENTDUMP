@@ -1,0 +1,111 @@
+import java.util.Scanner;
+
+public class Exercise10_03 {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    System.out.print("Enter an integer: ");
+    MyInteger n1 = new MyInteger(input.nextInt());
+    System.out.println("n1 is even? " + n1.isEven());
+    System.out.println("n1 is prime? " + n1.isPrime());
+    System.out.println("15 is prime? " + MyInteger.isPrime(15));
+
+    char[] chars = {'3', '5', '3', '9'};
+    System.out.println(MyInteger.parseInt(chars));
+
+    System.out.print("Enter a string: ");
+    String s = input.next();
+    System.out.println("You entered " + MyInteger.parseInt(s));
+    
+    System.out.print("Enter an integer: ");
+    MyInteger n2 = new MyInteger(input.nextInt());
+    System.out.println("n2 is odd? " + n2.isOdd());
+    System.out.println("45 is odd? " + MyInteger.isOdd(45));
+    System.out.println("n1 is equal to n2? " + n1.equals(n2));
+    System.out.println("n1 is equal to 5? " + n1.equals(5));
+  }
+}
+
+class MyInteger {
+
+	//int storer
+	    public int value;
+
+	    public MyInteger(int value) {
+	        this.value = value;
+	    }
+
+
+	    
+	    
+	    public int getValue() {
+	        return value;
+	    }
+
+	    
+	    //for the int default
+	    public boolean isEven() {
+	        return isEven(this.value);
+	        else {
+	        	this.value = false;
+	        }
+	    }
+
+	    public boolean isOdd() {
+	        return isOdd(this.value);
+	    }
+
+	    public boolean isPrime() {
+	        return isPrime(this.value);
+	    }
+	    
+
+	    // for the MyInt
+	    public static boolean isEven(int value) {
+	        return value % 2 == 0;
+	    }
+
+	    public static boolean isOdd(int value) {
+	        return value % 2 != 0;
+	    }
+
+	    public static boolean isPrime(int value) {
+	        if (value <= 1) return false;
+	        for (int i = 2; i <= Math.sqrt(value); i++) {
+	            if (value % i == 0) return false;
+	        }
+	        return true;
+	    }
+
+	    public static boolean isEven(MyInteger myInt) {
+	        return isEven(myInt.getValue());
+	    }
+
+	    public static boolean isOdd(MyInteger myInt) {
+	        return isOdd(myInt.getValue());
+	    }
+
+	    public static boolean isPrime(MyInteger myInt) {
+	        return isPrime(myInt.getValue());
+	    }
+	    	public boolean equals(int otherValue) {
+	        return this.value == otherValue;
+	    	}
+
+	    	public boolean equals(MyInteger otherInt) {
+	        return this.value == otherInt.getValue();
+	    	}
+
+	    
+
+
+	    	//convert chars to int and then into string for next one
+	    public static int parseInt(char[] characters) {
+	        return parseInt(new String(characters));
+	    }
+
+	    public static int parseInt(String s) {
+	        return Integer.parseInt(s);
+	    }
+	
+
+}
